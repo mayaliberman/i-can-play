@@ -1,65 +1,92 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-    font-family: "Muli", sans-serif;
-    background-color: lemonchiffon;
+  font-family: "Muli", sans-serif;
+  background-color: lemonchiffon;
 }
 
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  padding-bottom: 20px;
+}
+
+p {
+  width: 600px;
+  line-height: 2;
+  text-align: center;
 }
 
 .xylophone {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .note {
-    width: 100px;
-    padding-top: 90px;
-    border: solid 2px lightyellow;
-    margin: 10px;
-    text-align: center;
-    box-shadow: 5px 3px 5px lightgrey;
+  width: 100px;
+  padding-top: 90px;
+  border: solid 2px lightyellow;
+  margin: 10px;
+  text-align: center;
+  box-shadow: 5px 3px 5px lightgrey;
 }
 
 .c {
-    height: 350px;
-    background-color: #e30a13;
+  height: 350px;
+  background-color: #e30a13;
 }
 
 .d {
-    height: 320px;
-    background-color: #f7a600;
+  height: 320px;
+  background-color: #f7a600;
 }
 
 .e {
-    height: 290px;
-    background-color: #feea00;
+  height: 290px;
+  background-color: #feea00;
 }
 
 .f {
-    height: 260px;
-    background-color: #98bf26;
+  height: 260px;
+  background-color: #98bf26;
 }
 
 .g {
-     height: 230px;
-     background-color: #31b045;
+  height: 230px;
+  background-color: #31b045;
 }
 .a {
-    height: 200px;
-    background-color: #3dadec;
+  height: 200px;
+  background-color: #3dadec;
 }
 
 .b {
-    height: 170px;
-    background-color: #0465cc;
+  height: 170px;
+  background-color: #0465cc;
 }
 
 .high-c {
-    height: 140px;
-    background-color: #933983;
+  height: 140px;
+  background-color: #933983;
+}
+.game-button {
+    padding-top: 30px;
+}
+.start-game {
+  display: block;
+  width: 120px;
+  margin: 0 auto;
+  padding: 15px 10px;
+  background-color: #d23c89;
+  color: white;
+}
+
+.chosen {
+border: solid 2px #3cd2b9;
 }
