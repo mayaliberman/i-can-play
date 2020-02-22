@@ -9,7 +9,9 @@ const a = document.querySelector(".a");
 const b = document.querySelector(".b");
 const highC = document.querySelector(".high-c");
 const startGameButton = document.querySelector(".start-game");
+const xylophone = document.querySelector(".xylophone");
 const score = 0;
+
 const patterns = [
   [0, 1, 2, 0, 2, 1, 1, 0, 2, 1, 2, 0, 2, 0, 1, 2, 1, 0],
   [0, 1, 3, 0, 3, 1, 1, 0, 3, 1, 3, 0, 3, 0, 1, 3, 1, 0],
@@ -26,6 +28,8 @@ const keys = [
   [0, 1, 6],
   [0, 1, 7]
 ];
+const stages = patterns.length;
+const gameStatus = document.querySelector(".game-status");
 
 c.onclick = () => {
   const sound = new Audio(); // create the audio
@@ -68,11 +72,47 @@ highC.onclick = () => {
   sound.play();
 };
 
+
+
+
+
+
 startGameButton.addEventListener("click", () => {
-//   document.querySelector(".desc").style.visibility = "hidden";
+    xylophone.style.display = 'flex';
+    gameStatus.style.display = 'none';
+    
   for (let i = 0; i < notes.length; i++) {
     if (i !== keys[0][i]) {
       notes[i].style.display = "none";
     }
   }
+  startGameButton.style.display = "none";
+  checkWin();
 });
+
+function checkWin() {
+  let playerPattern = [];
+  
+  xylophone.addEventListener("click", e => {
+    playerPattern.push(parseInt(e.target.dataset["key"]));
+
+    if (playerPattern.length === 18) {
+     
+      for (let i = 0; i < playerPattern.length; i++) {
+        if (playerPattern[i] !== patterns[0][i]) {
+          xylophone.style.display = "none";
+          gameStatus.textContent = "Nice Try!";
+            gameStatus.style.display = "block";
+            startGameButton.style.display = "block";
+            playerPattern = [];
+          return;
+        } else {
+          xylophone.style.display = "none";
+            gameStatus.style.display = "block";
+            startGameButton.style.display = "block";
+            playerPattern = [];
+        }
+      }
+    }
+  });
+}

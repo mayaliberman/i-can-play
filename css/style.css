@@ -75,6 +75,16 @@ p {
   height: 140px;
   background-color: #933983;
 }
+
+.game-status {
+   display: block;
+  width: 500px;
+  margin: 0 auto; 
+  text-align: center;
+  font-size: 36px;
+  color: teal;
+  display: none;
+}
 .game-button {
     padding-top: 30px;
 }
