@@ -17,7 +17,7 @@ header {
 }
 
 p {
-  width: 600px;
+ max-width: 600px;
   line-height: 2;
   text-align: center;
 }
@@ -71,7 +71,7 @@ p {
   background-color: #0465cc;
 }
 
-.high-c {
+.c2 {
   height: 140px;
   background-color: #933983;
 }
