@@ -1,6 +1,13 @@
 "use strict";
 const notes = document.querySelectorAll(".note");
+
 // TODO: Convert to function/loop;
+
+// const createNotesVariables = (keys) => {
+//   for(let key in keys) {
+//     const [key] = document.querySelector(`.${key}`);
+//   }
+// }
 const c = document.querySelector(".c");
 const d = document.querySelector(".d");
 const e = document.querySelector(".e");
@@ -14,6 +21,7 @@ const gameStatus = document.querySelector(".game-status");
 const xylophone = document.querySelector(".xylophone");
 let currentLevel = 0;
 
+const keySounds = { c, d, e, f, g, a, b, c2 };
 let score = 0;
 let playerPattern = [];
 const patterns = [
@@ -25,7 +33,6 @@ const patterns = [
   [0, 1, 7, 0, 7, 1, 1, 0, 7, 1, 7, 0, 7, 0, 1, 7, 1, 0]
 ];
 const levels = patterns.length;
-const keySounds = { c, d, e, f, g, a, b, c2 };
 
 // TODO: Convert hard coded keys to function
 const keysForCurrentLevel = currentLevel => {
@@ -34,21 +41,20 @@ const keysForCurrentLevel = currentLevel => {
   for (let i = 0; i <= maxNum; i++) {
     numOfKeys.push(i);
   }
+  console.log(numOfKeys);
   return numOfKeys;
 };
 
-
-function addSounds(sounds) {
- 
+const addSounds = sounds => {
   for (let sound in sounds) {
     sounds[sound].onclick = () => {
       const mp3 = new Audio();
       mp3.src = `sounds/xylophone-${sound}.mp3`;
-      // console.log(mp3.src)
+
       mp3.play();
     };
   }
-}
+};
 addSounds(keySounds);
 
 // TODO: Convert for loop to filter on keys array
@@ -60,40 +66,45 @@ startGameButton.addEventListener("click", () => {
     }
   }
   startGameButton.style.display = "none";
-  checkWin();
+
+  listenToNoteClicks();
 });
 
-function checkWin() {
+const listenToNoteClicks = () => {
   xylophone.addEventListener("click", e => {
     if (e.target.tagName === "BUTTON") {
       playerPattern.push(parseInt(e.target.dataset["key"]));
-
-      if (playerPattern.length === 18) {
-        for (let i = 0; i < playerPattern.length; i++) {
-          if (playerPattern[i] !== patterns[currentLevel][i]) {
-            xylophone.style.display = "none";
-            gameStatus.textContent = "Nice Try!";
-            gameStatus.style.display = "block";
-            startGameButton.style.display = "block";
-          } else {
-            xylophone.style.display = "none";
-            gameStatus.style.display = "block";
-            startGameButton.style.display = "block";
-            level++;
-          }
-        }
+    }
+    if (playerPattern.length === 18) {
+      if (playerPattern.every((element, i) => patterns[currentLevel][i] === element)) {
+        return displayGameStatus(true);
       }
+      return displayGameStatus(false);
     }
   });
-}
+};
 
-function nextLevel() {
-  level++;
+const displayGameStatus = didUserWin => {
+  if (didUserWin === false) {
+    xylophone.style.display = "none";
+    gameStatus.textContent = "Nice Try!";
+    gameStatus.style.display = "block";
+    startGameButton.style.display = "block";
+  } else {
+    xylophone.style.display = "none";
+    gameStatus.style.display = "block";
+    startGameButton.style.display = "block";
+    startGameButton.textContent = "Next Level";
+  }
+};
+
+const nextLevel = () => {
+  currentLevel++;
   playerPattern = [];
-}
+};
 
-function restartGame() {
+const restartGame = () => {
   xylophone.style.display = "flex";
   gameStatus.style.display = "none";
   playerPattern = [];
-}
+};
