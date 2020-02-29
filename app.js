@@ -81,7 +81,6 @@ playGameButton.addEventListener("click", () => {
 const listenToNoteClicks = () => {
   xylophone.addEventListener("click", e => {
     if (e.target.tagName === "BUTTON") {
-      debugger
       playerPattern.push(parseInt(e.target.dataset["key"]));
       console.log(playerPattern)
     }
