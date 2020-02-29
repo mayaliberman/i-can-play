@@ -17,7 +17,7 @@ header {
 }
 
 p {
- max-width: 600px;
+  max-width: 600px;
   line-height: 2;
   text-align: center;
 }
@@ -77,19 +77,19 @@ p {
 }
 
 .game-status {
-   display: block;
+  display: block;
   width: 500px;
-  margin: 0 auto; 
+  margin: 0 auto;
   text-align: center;
   font-size: 36px;
   color: teal;
   display: none;
 }
 .game-button {
-    padding-top: 30px;
+  padding-top: 30px;
 }
-.start-game {
-  display: block;
+.start-game,
+.next-level {
   width: 120px;
   margin: 0 auto;
   padding: 15px 10px;
@@ -97,6 +97,14 @@ p {
   color: white;
 }
 
+.start-game {
+  display: block;
+}
+
+.next-level {
+  display: none;
+}
+
 .chosen {
-border: solid 2px #3cd2b9;
+  border: solid 2px #3cd2b9;
 }

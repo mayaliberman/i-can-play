@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/normlize.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:400,600&display=swap" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-        <title>I Can Play</title>
+    <title>I Can Play</title>
 </head>
+
 <body>
- <header>
-     <h1>I Can Play</h1>
-     <p class="desc">Press the "Start Game" button. If you play the right sequence of sounds you win.
-         What is the right sequence??? <br>hint: 123, 132, 213, 231, 312, 321.
-     </p>
- </header> 
- <main>
-     <div class="xylophone">
-        <button data-key="0" class="c note">C</button>
-        <button data-key="1" class="d note">D</button>
-        <button data-key="2" class="e note">E</button>
-        <button data-key="3" class="f note">F</button>
-        <button data-key="4" class="g note">G</button>
-        <button data-key="5" class="a note">A</button>
-        <button data-key="6" class="b note">B</button>
-        <button data-key="7" class="c2 note">C</button>
-     </div>
-     <div class="game-status"><h2>Great play!</h2></div>
-     <div class="game-button">
-         <button class="start-game">Start Game</button>
-     </div>
- </main>
- <script src="app.js"></script>  
+    <header>
+        <h1>I Can Play</h1>
+        <p class="desc">Press the "Start Game" button. If you play the right sequence of sounds you win.
+            What is the right sequence??? <br>hint: 123, 132, 213, 231, 312, 321.
+        </p>
+    </header>
+    <main>
+        <div class="xylophone">
+            <button data-key="0" class="c note">C</button>
+            <button data-key="1" class="d note">D</button>
+            <button data-key="2" class="e note">E</button>
+            <button data-key="3" class="f note">F</button>
+            <button data-key="4" class="g note">G</button>
+            <button data-key="5" class="a note">A</button>
+            <button data-key="6" class="b note">B</button>
+            <button data-key="7" class="c2 note">C</button>
+        </div>
+        <div class="game-status">
+            <h2>Great play!</h2>
+        </div>
+        <div class="game-button">
+            <button class="start-game">Start Game</button>
+        </div>
+        <div class="level-button">
+            <button class="next-level">Next Level</button>
+
+        </div>
+    </main>
+    <script src="app.js"></script>
 </body>
+
 </html>
