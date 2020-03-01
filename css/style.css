@@ -26,6 +26,8 @@ p {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .note {
@@ -108,3 +110,5 @@ p {
 .chosen {
   border: solid 2px #3cd2b9;
 }
+
+
