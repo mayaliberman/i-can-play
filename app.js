@@ -1,7 +1,12 @@
 "use strict";
+//TODO: Add keyup events for numbers to be active;
+//TODO: Solve late feedback with keyup on mobile devices
+//TODO: Responsive design
+//TODO: Refactor code to be more understandable with reading flow
+// TODO: Convert notes query selectors to function/loop;
+
 const notes = document.querySelectorAll(".note");
 
-// TODO: Convert to function/loop;
 
 const c = document.querySelector(".c");
 const d = document.querySelector(".d");
