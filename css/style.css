@@ -89,7 +89,7 @@ p {
   padding-top: 30px;
 }
 .start-game,
-.next-level {
+.next-level, .replay {
   width: 120px;
   margin: 0 auto;
   padding: 15px 10px;
@@ -101,7 +101,7 @@ p {
   display: block;
 }
 
-.next-level {
+.next-level, .replay {
   display: none;
 }
 
