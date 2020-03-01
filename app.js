@@ -56,7 +56,6 @@ const addSounds = sounds => {
 };
 addSounds(keySounds);
 
-
 playGameButton.addEventListener("click", () => {
   if (gameStatus.textContent === "Nice Try!") {
     restartGame();
@@ -80,22 +79,15 @@ const restartGame = () => {
   replayButton.style.display = "none";
   activeKeysForLevel();
 };
-// TODO: Convert for loop to filter on keys array
+
 const activeKeysForLevel = () => {
   const keys = numOfKeysForCurrentLevel(currentLevel);
   if (keys) {
-    for (let i = 0; i < notes.length; i++) {
-      if (i !== keys[i]) {
-        notes[i].style.display = "none";
-      } else {
-        notes[i].style.display = "block";
-      }
-    // let newArray = arr.filter(callback(element[, index, [array]])[, thisArg])
-    
-      // keys.filter(
-      //   (element, i) => i !== element[i] ? notes[i].style.display = 'none' : notes[i].style.display = 'block')
-      
-    }
+    notes.forEach((element, i) => {
+      i !== keys[i]
+        ? (element.style.display = "none")
+        : (element.style.display = "block");
+    });
     playGameButton.style.display = "none";
     gameStatus.style.display = "none";
   }
@@ -103,13 +95,12 @@ const activeKeysForLevel = () => {
 
 const listenToNoteClicks = () => {
   xylophone.addEventListener("click", e => {
+    
     if (e.target.className.includes("note")) {
       playerPattern.push(parseInt(e.target.dataset["key"]));
     }
     if (playerPattern.length === 18) {
-      if (currentLevel === patterns.length - 1) {
-        gameOver();
-      }
+      
       if (
         playerPattern.every(
           (element, i) => patterns[currentLevel][i] === element
@@ -131,31 +122,34 @@ const displayGameStatus = didUserWin => {
     gameStatus.style.display = "block";
     replayButton.style.display = "block";
   } else if (didUserWin === true) {
-    xylophone.style.display = "none";
-    gameStatus.style.display = "block";
-    nextLevelButton.style.display = "block";
+    if (currentLevel === patterns.length - 1) {
+      gameOver()
+    } else {
+      xylophone.style.display = "none";
+      gameStatus.style.display = "block";
+      nextLevelButton.style.display = "block";
+
+    }
   }
 };
 
 const nextLevel = () => {
-  playerPattern = [];
-  nextLevelButton.style.display = "none";
   if (currentLevel < patterns.length - 1) {
     currentLevel++;
     xylophone.style.display = "flex";
     numOfKeysForCurrentLevel(currentLevel);
     activeKeysForLevel();
-  } else {
-    gameOver();
-  }
+  } 
+  playerPattern = [];
+  nextLevelButton.style.display = "none";
 };
 
 const gameOver = () => {
-   gameStatus.textContent = "Game Over!";
-    gameStatus.style.display = "block";
-    xylophone.style.display = "none";
-    replayButton.style.display = "block";
-  
+  nextLevelButton.style.display = 'none';
+  gameStatus.textContent = "Game Over!";
+  gameStatus.style.display = "block";
+  xylophone.style.display = "none";
+  replayButton.style.display = "block";
 };
 
 nextLevelButton.addEventListener("click", nextLevel);
